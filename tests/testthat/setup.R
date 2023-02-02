@@ -8,7 +8,7 @@ if (Sys.getenv("DONT_DOWNLOAD_JDBC_DRIVERS", "") == "TRUE") {
   downloadJdbcDrivers("oracle", jdbcDriverFolder)
 }
 
-connectionDetails <- Eunomia::getEunomiaConnectionDetails()
+connectionDetailsEunomia <- Eunomia::getEunomiaConnectionDetails()
 cdmDatabaseSchema <- "main"
 resultsDatabaseSchema <- "main"
 cdmVersion <- 5
