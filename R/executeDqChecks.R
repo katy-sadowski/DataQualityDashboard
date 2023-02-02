@@ -48,7 +48,9 @@
 #' @importFrom magrittr %>%
 #' @import DatabaseConnector
 #' @importFrom stringr str_detect regex
-#' @importFrom utils packageVersion read.csv
+#' @importFrom utils packageVersion read.csv write.table
+#' @importFrom rlang .data
+#' @importFrom tidyselect all_of
 #'
 #' @export
 #'
@@ -201,7 +203,7 @@ executeDqChecks <- function(connectionDetails,
   }
 
   ## remove offset from being checked
-  fieldChecks <- subset(fieldChecks, cdmFieldName != "offset")
+  fieldChecks <- subset(fieldChecks, fieldChecks$cdmFieldName != "offset")
 
   checksToInclude <- checkDescriptionsDf$checkName[sapply(checkDescriptionsDf$checkName, function(check) {
     !is.null(eval(parse(text = sprintf("tableChecks$%s", check)))) |
